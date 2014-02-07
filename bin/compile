@@ -124,9 +124,12 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
     npm install grunt
     echo "-----> Found Gruntfile, running grunt heroku:$NODE_ENV task"
 
-    echo `ls -a $build_dir`
+    old_dir=`pwd`
+    cd $build_dir
 
-    CACHE_DIR=$cache_dir ENV_DIR=$env_dir BUILD_DIR=$build_dir $build_dir/node_modules/.bin/grunt heroku:$NODE_ENV
+    ./node_modules/.bin/grunt heroku:$NODE_ENV
+
+    cd $old_dir
   else
     echo "-----> No Gruntfile (grunt.js, Gruntfile.js, Gruntfile.coffee) found"
   fi
