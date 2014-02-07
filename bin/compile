@@ -126,7 +126,9 @@ echo "export PATH=\"\$HOME/vendor/node/bin:\$HOME/bin:\$HOME/node_modules/.bin:\
 
     old_dir=`pwd`
     cd $build_dir
+    echo `ls -a`
 
+    ./node_modules/.bin/bower install
     ./node_modules/.bin/grunt heroku:$NODE_ENV
 
     cd $old_dir
